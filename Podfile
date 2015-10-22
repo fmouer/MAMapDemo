@@ -1,0 +1,6 @@
+platform:ios, '7.0'
+pod 'AFNetworking', '~> 2.5.4'
+pod 'Masonry', '~> 0.6.1'
+pod 'JSONKit-NoWarning', '~> 1.2'
+pod 'SDWebImage', '~> 3.7.2'
+pod 'AMap3DMap', '~> 2.5.1'

@@ -1,0 +1,19 @@
+//
+//  MAMapDemo.pch
+//  MAMapDemo
+//
+//  Created by fmouer on 15/10/13.
+//  Copyright © 2015年 fmouer. All rights reserved.
+//
+
+#ifndef MAMapDemo_pch
+#define MAMapDemo_pch
+
+#import <MAMapKit/MAMapKit.h>
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+//高德key
+#define kMAMapKey       @"d02412348b69091bb8222d9e2fb80f50"
+
+#endif /* MAMapDemo_pch */
