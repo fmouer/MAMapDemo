@@ -144,16 +144,20 @@
     return NO;
 }
 
+#pragma mark CLLocationCoordinate2D 转换  NSValue
 - (NSValue *)getVauleWithCoordinate:(CLLocationCoordinate2D)coordinate
 {
     return [NSValue valueWithCGPoint:(CGPoint){coordinate.latitude,coordinate.longitude}];
 }
+
+#pragma mark NSValue 转换 CLLocationCoordinate2D
 - (CLLocationCoordinate2D)getCoordinateWithValue:(NSValue *)value
 {
     CGPoint point = [value CGPointValue];
     return CLLocationCoordinate2DMake(point.x, point.y);
 }
 
+#pragma mark 根据ID筛选 MAPointAnnotation
 - (MAPointAnnotation *)getFilterAnnotationViewWith:(NSString *)annotationID from:(NSArray *)annotations
 {
     for (MAPointAnnotation * annotation in annotations) {
@@ -165,6 +169,8 @@
     return nil;
 }
 
+
+#pragma mark 生成MAAnnotationView
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
 {
     
