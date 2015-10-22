@@ -23,6 +23,6 @@ typedef NS_ENUM (NSInteger , FlowLayoutType){
 }
 @property (nonatomic, assign)FlowLayoutType flowLayoutType;
 
-@property (nonatomic, assign)CGPoint centerPoint;
+@property (nonatomic, assign)CGRect toRect;
 
 @end

@@ -12,4 +12,6 @@
 
 @property (nonatomic, copy)NSArray * dataSourceArray;
 
+@property (nonatomic, assign)CGRect fromRect;
+
 @end

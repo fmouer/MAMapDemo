@@ -9,13 +9,20 @@
 #import "PhotoFlowLayout.h"
 
 #define ActionSpace 3
+@interface PhotoFlowLayout ()
+{
+    
+}
+@property (nonatomic, assign)CGPoint centerPoint;
+@end
 
 @implementation PhotoFlowLayout
 
-//- (CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity
-//{
-//    return CGPointMake(100, 100);
-//}
+-(void)setToRect:(CGRect)toRect
+{
+    _toRect = toRect;
+    _centerPoint = CGPointMake(CGRectGetMidX(_toRect), CGRectGetMidY(_toRect));
+}
 
 -(instancetype)init
 {
@@ -73,7 +80,7 @@
         return temp;
     }
     UICollectionViewLayoutAttributes* attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:path];
-    attributes.size = CGSizeMake(self.itemSize.width, self.itemSize.height);
+    attributes.size = _toRect.size;
     attributes.center = _centerPoint;
     if (path.row == 9) {
         attributes.zIndex = _count;

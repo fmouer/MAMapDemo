@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class CustomAnnotationView;
 
 @interface MapViewController : UIViewController
+
+- (void)pushShowPhotoControllerWith:(CustomAnnotationView *)annotationView;
 
 @end

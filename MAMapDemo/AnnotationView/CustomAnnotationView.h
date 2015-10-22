@@ -7,6 +7,7 @@
 //
 
 #import <MAMapKit/MAMapKit.h>
+@class MapViewController;
 
 @interface CustomAnnotationView : MAAnnotationView
 {
@@ -19,6 +20,8 @@
 @property (nonatomic, assign)NSInteger  numberBadge;
 
 @property (nonatomic, strong)NSMutableArray * otherAnnotationInfos;
+
+@property (nonatomic, weak)MapViewController    * mapController;
 
 -(void)removeOtherAnnotationInfo:(NSDictionary *)object;
 

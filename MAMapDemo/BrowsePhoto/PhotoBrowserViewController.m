@@ -9,11 +9,13 @@
 #import "PhotoBrowserViewController.h"
 #import "PhotoCell.h"
 #import "PhotoFlowLayout.h"
+#import "MapViewController.h"
+#import "FadeBackControllerTransitioning.h"
 
 #define SingleLineNumber    4
 
 
-@interface PhotoBrowserViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+@interface PhotoBrowserViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UINavigationControllerDelegate>
 {
     UICollectionView            *   _photoCollectionView;
     PhotoFlowLayout             *   _flowLayout;
@@ -21,12 +23,15 @@
     PhotoFlowLayout             *   _centerFlowLayout;
     float       width;
 }
+@property (nonatomic, strong) UIPercentDrivenInteractiveTransition *interactivePopTransition;
+
 @end
 
 @implementation PhotoBrowserViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = NO;
     // Do any additional setup after loading the view.
     CGPoint point = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2);
@@ -38,12 +43,12 @@
     _otherFlowLayout = [[PhotoFlowLayout alloc] init];
     _otherFlowLayout.itemSize = _flowLayout.itemSize;
     _otherFlowLayout.flowLayoutType = FlowLayoutTypeElastic;
-    _otherFlowLayout.centerPoint = point;
+    _otherFlowLayout.toRect = _fromRect;
     
     _centerFlowLayout = [[PhotoFlowLayout alloc] init];
     _centerFlowLayout.itemSize = _flowLayout.itemSize;
     _centerFlowLayout.flowLayoutType = FlowLayoutTypeCenter;
-    _centerFlowLayout.centerPoint = point;
+    _centerFlowLayout.toRect = _fromRect;
     
     _photoCollectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:_flowLayout];
     _photoCollectionView.backgroundColor = [UIColor clearColor];
@@ -55,6 +60,11 @@
     
     UIBarButtonItem * rightButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"刷新" style:UIBarButtonItemStylePlain target:self action:@selector(rightButtonItemEvent)];
     self.navigationItem.rightBarButtonItem = rightButtonItem;
+    
+    UIScreenEdgePanGestureRecognizer *popRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePopRecognizer:)];
+    popRecognizer.edges = UIRectEdgeLeft;
+    [self.view addGestureRecognizer:popRecognizer];
+
 }
 
 - (void)rightButtonItemEvent
@@ -116,6 +126,77 @@
 {
     return YES;
 }
+
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    if (self.navigationController.delegate == self) {
+        self.navigationController.delegate = nil;
+    }
+    [self rightButtonItemEvent];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (self.navigationController.delegate != self) {
+        self.navigationController.delegate = self;
+    }
+}
+
+#pragma mark UINavigationControllerDelegate methods
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController *)fromVC
+                                                 toViewController:(UIViewController *)toVC {
+    // Check if we're transitioning from this view controller to a DSLSecondViewController
+    if (fromVC == self && [toVC isKindOfClass:[MapViewController class]]) {
+        return [[FadeBackControllerTransitioning alloc] init];
+    }
+    else {
+        return nil;
+    }
+}
+
+- (id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController
+                         interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController {
+    // Check if this is for our custom transition
+    if ([animationController isKindOfClass:[FadeBackControllerTransitioning class]]) {
+        return self.interactivePopTransition;
+    }
+    else {
+        return nil;
+    }
+}
+
+- (void)handlePopRecognizer:(UIScreenEdgePanGestureRecognizer*)recognizer {
+    CGFloat progress = [recognizer translationInView:self.view].x / (self.view.bounds.size.width * 1.0);
+    progress = MIN(1.0, MAX(0.0, progress));
+    
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        // Create a interactive transition and pop the view controller
+        self.interactivePopTransition = [[UIPercentDrivenInteractiveTransition alloc] init];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else if (recognizer.state == UIGestureRecognizerStateChanged) {
+        // Update the interactive transition's progress
+        [self.interactivePopTransition updateInteractiveTransition:progress];
+    }
+    else if (recognizer.state == UIGestureRecognizerStateEnded || recognizer.state == UIGestureRecognizerStateCancelled) {
+        // Finish or cancel the interactive transition
+        if (progress > 0.5) {
+            [self.interactivePopTransition finishInteractiveTransition];
+        }
+        else {
+            [self.interactivePopTransition cancelInteractiveTransition];
+        }
+        
+        self.interactivePopTransition = nil;
+    }
+    
+}
+
+
 /*
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
