@@ -21,6 +21,9 @@
 		75A35EE91BD8AC720044C684 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A35EE21BD8AC720044C684 /* MapViewController.m */; settings = {ASSET_TAGS = (); }; };
 		75A35EEA1BD8AC720044C684 /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A35EE51BD8AC720044C684 /* CustomAnnotationView.m */; settings = {ASSET_TAGS = (); }; };
 		75A35EEB1BD8AC720044C684 /* MAPointAnnotation+privacy.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A35EE71BD8AC720044C684 /* MAPointAnnotation+privacy.m */; settings = {ASSET_TAGS = (); }; };
+		75A35EF21BD8C0AE0044C684 /* PhotoBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A35EF11BD8C0AE0044C684 /* PhotoBrowserViewController.m */; settings = {ASSET_TAGS = (); }; };
+		75A35EF51BD8CE290044C684 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A35EF41BD8CE290044C684 /* PhotoCell.m */; settings = {ASSET_TAGS = (); }; };
+		75A35EF81BD8DA1F0044C684 /* PhotoFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A35EF71BD8DA1F0044C684 /* PhotoFlowLayout.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,12 @@
 		75A35EE51BD8AC720044C684 /* CustomAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotationView.m; sourceTree = "<group>"; };
 		75A35EE61BD8AC720044C684 /* MAPointAnnotation+privacy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MAPointAnnotation+privacy.h"; sourceTree = "<group>"; };
 		75A35EE71BD8AC720044C684 /* MAPointAnnotation+privacy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MAPointAnnotation+privacy.m"; sourceTree = "<group>"; };
+		75A35EF01BD8C0AE0044C684 /* PhotoBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoBrowserViewController.h; sourceTree = "<group>"; };
+		75A35EF11BD8C0AE0044C684 /* PhotoBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoBrowserViewController.m; sourceTree = "<group>"; };
+		75A35EF31BD8CE290044C684 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
+		75A35EF41BD8CE290044C684 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
+		75A35EF61BD8DA1F0044C684 /* PhotoFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoFlowLayout.h; sourceTree = "<group>"; };
+		75A35EF71BD8DA1F0044C684 /* PhotoFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoFlowLayout.m; sourceTree = "<group>"; };
 		BA9FB7917981ADA66097DCB3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,6 +209,12 @@
 		75A35EEC1BD8BED30044C684 /* BrowsePhoto */ = {
 			isa = PBXGroup;
 			children = (
+				75A35EF01BD8C0AE0044C684 /* PhotoBrowserViewController.h */,
+				75A35EF11BD8C0AE0044C684 /* PhotoBrowserViewController.m */,
+				75A35EF31BD8CE290044C684 /* PhotoCell.h */,
+				75A35EF41BD8CE290044C684 /* PhotoCell.m */,
+				75A35EF61BD8DA1F0044C684 /* PhotoFlowLayout.h */,
+				75A35EF71BD8DA1F0044C684 /* PhotoFlowLayout.m */,
 			);
 			path = BrowsePhoto;
 			sourceTree = "<group>";
@@ -403,10 +418,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75A35EF51BD8CE290044C684 /* PhotoCell.m in Sources */,
 				75A35EEA1BD8AC720044C684 /* CustomAnnotationView.m in Sources */,
 				35019EE11BCD59AB00AF1C03 /* ViewController.m in Sources */,
+				75A35EF21BD8C0AE0044C684 /* PhotoBrowserViewController.m in Sources */,
 				75A35EE81BD8AC720044C684 /* MapRectObject.m in Sources */,
 				75A35EE91BD8AC720044C684 /* MapViewController.m in Sources */,
+				75A35EF81BD8DA1F0044C684 /* PhotoFlowLayout.m in Sources */,
 				35019EDE1BCD59AB00AF1C03 /* AppDelegate.m in Sources */,
 				75A35EEB1BD8AC720044C684 /* MAPointAnnotation+privacy.m in Sources */,
 				35019EDB1BCD59AB00AF1C03 /* main.m in Sources */,
