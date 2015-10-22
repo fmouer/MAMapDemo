@@ -123,6 +123,7 @@
 		35019ED81BCD59AB00AF1C03 /* MAMapDemo */ = {
 			isa = PBXGroup;
 			children = (
+				75A35EEC1BD8BED30044C684 /* BrowsePhoto */,
 				75A35EE01BD8AC720044C684 /* Controllers */,
 				75A35EE31BD8AC720044C684 /* AnnotationView */,
 				75A35EDD1BD8AC720044C684 /* Auxiliary */,
@@ -194,6 +195,13 @@
 				75A35EE71BD8AC720044C684 /* MAPointAnnotation+privacy.m */,
 			);
 			path = AnnotationView;
+			sourceTree = "<group>";
+		};
+		75A35EEC1BD8BED30044C684 /* BrowsePhoto */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BrowsePhoto;
 			sourceTree = "<group>";
 		};
 		C902C096505377E097B8B67C /* Pods */ = {
