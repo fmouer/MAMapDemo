@@ -44,9 +44,7 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    [self performSelector:@selector(loadAnnotation) withObject:nil afterDelay:1];
-    //    [self loadAnnotation];
-    
+    [self performSelector:@selector(loadAnnotation) withObject:nil afterDelay:1];    
 }
 
 - (void)loadAnnotation
