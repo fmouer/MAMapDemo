@@ -16,11 +16,17 @@
 		35019EF41BCD59AB00AF1C03 /* MAMapDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 35019EF31BCD59AB00AF1C03 /* MAMapDemoTests.m */; };
 		35019EFF1BCD59AB00AF1C03 /* MAMapDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 35019EFE1BCD59AB00AF1C03 /* MAMapDemoUITests.m */; };
 		35019F111BCD5C5F00AF1C03 /* points.plist in Resources */ = {isa = PBXBuildFile; fileRef = 35019F101BCD5C5F00AF1C03 /* points.plist */; };
+		352DFC361BD931EF00E8A47F /* FadeBackControllerTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 352DFC331BD931EF00E8A47F /* FadeBackControllerTransitioning.m */; settings = {ASSET_TAGS = (); }; };
+		352DFC371BD931EF00E8A47F /* FadeShowControllerTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 352DFC351BD931EF00E8A47F /* FadeShowControllerTransitioning.m */; settings = {ASSET_TAGS = (); }; };
+		352DFC3A1BD93D7900E8A47F /* PublicObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 352DFC391BD93D7900E8A47F /* PublicObject.m */; settings = {ASSET_TAGS = (); }; };
 		6CD47374FCF5A27FA430DB40 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A0DF443EDFD297BC652620 /* libPods.a */; };
 		75A35EE81BD8AC720044C684 /* MapRectObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A35EDF1BD8AC720044C684 /* MapRectObject.m */; settings = {ASSET_TAGS = (); }; };
 		75A35EE91BD8AC720044C684 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A35EE21BD8AC720044C684 /* MapViewController.m */; settings = {ASSET_TAGS = (); }; };
 		75A35EEA1BD8AC720044C684 /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A35EE51BD8AC720044C684 /* CustomAnnotationView.m */; settings = {ASSET_TAGS = (); }; };
 		75A35EEB1BD8AC720044C684 /* MAPointAnnotation+privacy.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A35EE71BD8AC720044C684 /* MAPointAnnotation+privacy.m */; settings = {ASSET_TAGS = (); }; };
+		75A35EF21BD8C0AE0044C684 /* PhotoBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A35EF11BD8C0AE0044C684 /* PhotoBrowserViewController.m */; settings = {ASSET_TAGS = (); }; };
+		75A35EF51BD8CE290044C684 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A35EF41BD8CE290044C684 /* PhotoCell.m */; settings = {ASSET_TAGS = (); }; };
+		75A35EF81BD8DA1F0044C684 /* PhotoFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A35EF71BD8DA1F0044C684 /* PhotoFlowLayout.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +66,12 @@
 		35019F001BCD59AB00AF1C03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35019F0C1BCD5B2000AF1C03 /* MAMapDemo.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAMapDemo.pch; sourceTree = "<group>"; };
 		35019F101BCD5C5F00AF1C03 /* points.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = points.plist; sourceTree = "<group>"; };
+		352DFC321BD931EF00E8A47F /* FadeBackControllerTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FadeBackControllerTransitioning.h; sourceTree = "<group>"; };
+		352DFC331BD931EF00E8A47F /* FadeBackControllerTransitioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FadeBackControllerTransitioning.m; sourceTree = "<group>"; };
+		352DFC341BD931EF00E8A47F /* FadeShowControllerTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FadeShowControllerTransitioning.h; sourceTree = "<group>"; };
+		352DFC351BD931EF00E8A47F /* FadeShowControllerTransitioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FadeShowControllerTransitioning.m; sourceTree = "<group>"; };
+		352DFC381BD93D7900E8A47F /* PublicObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicObject.h; sourceTree = "<group>"; };
+		352DFC391BD93D7900E8A47F /* PublicObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicObject.m; sourceTree = "<group>"; };
 		3E2F421089079F855A1F9032 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		75A35EDE1BD8AC720044C684 /* MapRectObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapRectObject.h; sourceTree = "<group>"; };
 		75A35EDF1BD8AC720044C684 /* MapRectObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapRectObject.m; sourceTree = "<group>"; };
@@ -69,6 +81,12 @@
 		75A35EE51BD8AC720044C684 /* CustomAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotationView.m; sourceTree = "<group>"; };
 		75A35EE61BD8AC720044C684 /* MAPointAnnotation+privacy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MAPointAnnotation+privacy.h"; sourceTree = "<group>"; };
 		75A35EE71BD8AC720044C684 /* MAPointAnnotation+privacy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MAPointAnnotation+privacy.m"; sourceTree = "<group>"; };
+		75A35EF01BD8C0AE0044C684 /* PhotoBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoBrowserViewController.h; sourceTree = "<group>"; };
+		75A35EF11BD8C0AE0044C684 /* PhotoBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoBrowserViewController.m; sourceTree = "<group>"; };
+		75A35EF31BD8CE290044C684 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
+		75A35EF41BD8CE290044C684 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
+		75A35EF61BD8DA1F0044C684 /* PhotoFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoFlowLayout.h; sourceTree = "<group>"; };
+		75A35EF71BD8DA1F0044C684 /* PhotoFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoFlowLayout.m; sourceTree = "<group>"; };
 		BA9FB7917981ADA66097DCB3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,6 +141,8 @@
 		35019ED81BCD59AB00AF1C03 /* MAMapDemo */ = {
 			isa = PBXGroup;
 			children = (
+				352DFC311BD931EF00E8A47F /* FadeTransitioning */,
+				75A35EEC1BD8BED30044C684 /* BrowsePhoto */,
 				75A35EE01BD8AC720044C684 /* Controllers */,
 				75A35EE31BD8AC720044C684 /* AnnotationView */,
 				75A35EDD1BD8AC720044C684 /* Auxiliary */,
@@ -130,6 +150,8 @@
 				35019EDD1BCD59AB00AF1C03 /* AppDelegate.m */,
 				35019EDF1BCD59AB00AF1C03 /* ViewController.h */,
 				35019EE01BCD59AB00AF1C03 /* ViewController.m */,
+				352DFC381BD93D7900E8A47F /* PublicObject.h */,
+				352DFC391BD93D7900E8A47F /* PublicObject.m */,
 				35019EE21BCD59AB00AF1C03 /* Main.storyboard */,
 				35019EE51BCD59AB00AF1C03 /* Assets.xcassets */,
 				35019EE71BCD59AB00AF1C03 /* LaunchScreen.storyboard */,
@@ -167,6 +189,17 @@
 			path = MAMapDemoUITests;
 			sourceTree = "<group>";
 		};
+		352DFC311BD931EF00E8A47F /* FadeTransitioning */ = {
+			isa = PBXGroup;
+			children = (
+				352DFC321BD931EF00E8A47F /* FadeBackControllerTransitioning.h */,
+				352DFC331BD931EF00E8A47F /* FadeBackControllerTransitioning.m */,
+				352DFC341BD931EF00E8A47F /* FadeShowControllerTransitioning.h */,
+				352DFC351BD931EF00E8A47F /* FadeShowControllerTransitioning.m */,
+			);
+			path = FadeTransitioning;
+			sourceTree = "<group>";
+		};
 		75A35EDD1BD8AC720044C684 /* Auxiliary */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +227,19 @@
 				75A35EE71BD8AC720044C684 /* MAPointAnnotation+privacy.m */,
 			);
 			path = AnnotationView;
+			sourceTree = "<group>";
+		};
+		75A35EEC1BD8BED30044C684 /* BrowsePhoto */ = {
+			isa = PBXGroup;
+			children = (
+				75A35EF01BD8C0AE0044C684 /* PhotoBrowserViewController.h */,
+				75A35EF11BD8C0AE0044C684 /* PhotoBrowserViewController.m */,
+				75A35EF31BD8CE290044C684 /* PhotoCell.h */,
+				75A35EF41BD8CE290044C684 /* PhotoCell.m */,
+				75A35EF61BD8DA1F0044C684 /* PhotoFlowLayout.h */,
+				75A35EF71BD8DA1F0044C684 /* PhotoFlowLayout.m */,
+			);
+			path = BrowsePhoto;
 			sourceTree = "<group>";
 		};
 		C902C096505377E097B8B67C /* Pods */ = {
@@ -225,7 +271,6 @@
 				35019ED31BCD59AA00AF1C03 /* Frameworks */,
 				35019ED41BCD59AA00AF1C03 /* Resources */,
 				8932FCB540656678E9C3ABE5 /* Copy Pods Resources */,
-				52FC7A8B069556C1D775A9F9 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -358,21 +403,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		52FC7A8B069556C1D775A9F9 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		8932FCB540656678E9C3ABE5 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -395,13 +425,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75A35EF51BD8CE290044C684 /* PhotoCell.m in Sources */,
 				75A35EEA1BD8AC720044C684 /* CustomAnnotationView.m in Sources */,
 				35019EE11BCD59AB00AF1C03 /* ViewController.m in Sources */,
+				75A35EF21BD8C0AE0044C684 /* PhotoBrowserViewController.m in Sources */,
 				75A35EE81BD8AC720044C684 /* MapRectObject.m in Sources */,
 				75A35EE91BD8AC720044C684 /* MapViewController.m in Sources */,
+				75A35EF81BD8DA1F0044C684 /* PhotoFlowLayout.m in Sources */,
 				35019EDE1BCD59AB00AF1C03 /* AppDelegate.m in Sources */,
 				75A35EEB1BD8AC720044C684 /* MAPointAnnotation+privacy.m in Sources */,
 				35019EDB1BCD59AB00AF1C03 /* main.m in Sources */,
+				352DFC371BD931EF00E8A47F /* FadeShowControllerTransitioning.m in Sources */,
+				352DFC361BD931EF00E8A47F /* FadeBackControllerTransitioning.m in Sources */,
+				352DFC3A1BD93D7900E8A47F /* PublicObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

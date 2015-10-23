@@ -11,8 +11,10 @@
 #import "MapRectObject.h"
 #import "MAPointAnnotation+privacy.h"
 #import "CustomAnnotationView.h"
+#import "FadeShowControllerTransitioning.h"
+#import "PhotoBrowserViewController.h"
 
-@interface MapViewController ()<MAMapViewDelegate>
+@interface MapViewController ()<MAMapViewDelegate,UINavigationControllerDelegate>
 {
     MAMapView   * _mapView;
 }
@@ -22,9 +24,24 @@
 @end
 
 @implementation MapViewController
+-(void)viewWillDisappear:(BOOL)animated
+{
+    if (self.navigationController.delegate == self) {
+        self.navigationController.delegate = nil;
+    }
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (self.navigationController.delegate != self) {
+        self.navigationController.delegate = self;
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBar.translucent = NO;
     self.contentPoints = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"points" ofType:@"plist"]];
     _removeAnnotationFromCoordinate = [[NSMutableDictionary alloc] initWithCapacity:0];
     // Do any additional setup after loading the view.
@@ -34,6 +51,8 @@
     
     UIBarButtonItem * rightButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"刷新" style:UIBarButtonItemStylePlain target:self action:@selector(rightButtonItemEvent)];
     self.navigationItem.rightBarButtonItem = rightButtonItem;
+    [self performSelector:@selector(loadAnnotation) withObject:nil afterDelay:1];
+
 }
 
 - (void)rightButtonItemEvent
@@ -181,6 +200,7 @@
         if (annotationView == nil)
         {
             annotationView = [[CustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseIndetifier];
+            annotationView.mapController = self;
             
         }
         NSDictionary * pointInfo = pointAnnotation.annotationInfo;
@@ -197,7 +217,7 @@
         annotationView.centerOffset = CGPointMake(0, -18);
         if (pointAnnotation.newCoordinate2D.latitude) {
             annotationView.alpha = 0;
-            [MapViewController dispatchQueueDelayTime:0.1 block:^{
+            [PublicObject dispatchQueueDelayTime:0.1 block:^{
                 [UIView animateWithDuration:0.2 animations:^{
                     [pointAnnotation setCoordinate:pointAnnotation.newCoordinate2D];
                     annotationView.alpha = 1.0;
@@ -228,27 +248,27 @@
 }
 
 
-#pragma  mark - 异步执行
-+(void)dispatchAsyncBlock:(void(^)(void))block
+
+
+-(void)pushShowPhotoControllerWith:(CustomAnnotationView *)annotationView
 {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),block);
+    PhotoBrowserViewController * browserViewController = [[PhotoBrowserViewController alloc] init];
+    browserViewController.fromRect = annotationView.frame;
+    [self.navigationController pushViewController:browserViewController animated:YES];
 }
-//主线程 执行
-+(void)dispatchMainQueueBlock:(void(^)(void))block
-{
-    dispatch_async(dispatch_get_main_queue(),block);
-}
-//延时执行
-+ (void)dispatchQueueDelayTime:(float)delayTime block:(void(^)(void))block
-{
-    double delayInSeconds = delayTime;
-    //创建一个调度时间,相对于默认时钟或修改现有的调度时间。
-    dispatch_time_t delayInNanoSeconds =dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    //推迟两纳秒执行
-    dispatch_queue_t concurrentQueue =dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_after(delayInNanoSeconds, concurrentQueue, ^{
-        [MapViewController dispatchMainQueueBlock:block];
-    });
+
+#pragma mark UINavigationControllerDelegate methods
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController *)fromVC
+                                                 toViewController:(UIViewController *)toVC {
+    // Check if we're transitioning from this view controller to a
+    if (fromVC == self) {
+        return [[FadeShowControllerTransitioning alloc] init];
+    }
+    else {
+        return nil;
+    }
 }
 
 /*

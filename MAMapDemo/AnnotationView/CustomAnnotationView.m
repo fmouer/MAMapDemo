@@ -7,6 +7,7 @@
 //
 
 #import "CustomAnnotationView.h"
+#import "MapViewController.h"
 
 @interface CustomAnnotationView ()
 @end
@@ -66,7 +67,7 @@
 - (void)selectAnnotationViewEvent:(UIButton *)btn
 {
     NSLog(@"_otherAnnotationInfos is %@",_otherAnnotationInfos);
-
+    [_mapController pushShowPhotoControllerWith:self];
 }
 
 -(void)addOtherAnnotationInfo:(NSDictionary *)object
