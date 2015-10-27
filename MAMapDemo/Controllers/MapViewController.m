@@ -61,11 +61,6 @@
     [self loadAnnotation];
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
-    [self performSelector:@selector(loadAnnotation) withObject:nil afterDelay:1];    
-}
-
 - (void)loadAnnotation
 {
     if (_contentPoints.count) {
@@ -101,7 +96,6 @@
             NSValue * value = [_removeAnnotationFromCoordinate objectForKey:[pointInfo objectForKey:@"id"]];
             if (value) {
                 pointAnnotation.newCoordinate2D = [self getCoordinate2DWithInfo:pointInfo];
-                
                 pointAnnotation.coordinate = [self getCoordinateWithValue:value];
                 [_removeAnnotationFromCoordinate removeObjectForKey:[pointInfo objectForKey:@"id"]];
             }else{
