@@ -2,7 +2,7 @@
 //  FadeBackControllerTransitioning.h
 //  FRBrowserView
 //
-//  Created by ihotdo-fmouer on 15/7/30.
+//  Created by fmouer on 15/7/30.
 //  Copyright (c) 2015年 FRBrowserView. All rights reserved.
 //
 

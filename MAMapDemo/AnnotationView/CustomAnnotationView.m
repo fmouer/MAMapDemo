@@ -32,14 +32,25 @@
 -(void)setNumberBadge:(NSInteger)numberBadge
 {
     if (_numberBadgeLabel == nil) {
-        CGRect rect = self.frame;
-        float width = rect.size.width;
-        _numberBadgeLabel = [[UILabel alloc] initWithFrame:(CGRect){0,0,width+5,13}];
+        _numberBadgeLabel = [[UILabel alloc] initWithFrame:(CGRect){0,-7,0,18}];
         _numberBadgeLabel.font = [UIFont systemFontOfSize:15];
         _numberBadgeLabel.backgroundColor = [UIColor redColor];
         _numberBadgeLabel.textColor = [UIColor whiteColor];
-        _numberBadgeLabel.textAlignment = NSTextAlignmentRight;
+        _numberBadgeLabel.textAlignment = NSTextAlignmentCenter;
+        
+        _numberBadgeLabel.layer.cornerRadius = _numberBadgeLabel.frame.size.height/2;
+        _numberBadgeLabel.layer.masksToBounds = YES;
         [self addSubview:_numberBadgeLabel];
+//        NSLayoutConstraint * rightConstraint = [NSLayoutConstraint constraintWithItem:_numberBadgeLabel attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1 constant:0];
+//        NSLayoutConstraint * topConstraint = [NSLayoutConstraint constraintWithItem:_numberBadgeLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1 constant:0];
+//        NSLayoutConstraint * widthConstraint = [NSLayoutConstraint constraintWithItem:_numberBadgeLabel attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1 constant:20];
+//        widthConstraint.priority = UILayoutPriorityFittingSizeLevel;
+//        NSLayoutConstraint * heightConstraint = [NSLayoutConstraint constraintWithItem:_numberBadgeLabel attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1 constant:13];
+//        heightConstraint.priority = UILayoutPriorityFittingSizeLevel;
+//        [self addConstraint:rightConstraint];
+//        [self addConstraint:topConstraint];
+//        [self addConstraint:widthConstraint];
+//        [self addConstraint:heightConstraint];
         
         UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = self.bounds;
@@ -48,20 +59,9 @@
 
     }
     _numberBadgeLabel.text = [NSString stringWithFormat:@"%ld",(long)numberBadge];
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    if (self.selected == selected){
-        return;
-    }
-    
-    if (selected){
-
-    }else{
-    }
-    
-    [super setSelected:selected animated:animated];
+    CGSize size = [_numberBadgeLabel.text sizeWithAttributes:@{NSFontAttributeName:_numberBadgeLabel.font}];
+    size.width = MAX(_numberBadgeLabel.frame.size.height, size.width + 10);
+    _numberBadgeLabel.frame = CGRectMake(self.frame.size.width - size.width+5, _numberBadgeLabel.frame.origin.y, size.width, _numberBadgeLabel.frame.size.height);
 }
 
 - (void)selectAnnotationViewEvent:(UIButton *)btn

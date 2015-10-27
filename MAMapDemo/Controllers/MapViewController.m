@@ -114,7 +114,7 @@
             NSDictionary * otherPointInfo = [_contentPoints objectAtIndex:j];
             CGPoint otherPoint = [_mapView convertCoordinate:[self getCoordinate2DWithInfo:otherPointInfo] toPointToView:self.view];
             NSLog(@"otherPoint is %@",NSStringFromCGPoint(otherPoint));
-            BOOL isOverlay = [self IntersectFrom:point with:otherPoint];
+            BOOL isOverlay = [self intersectFrom:point with:otherPoint];
             NSLog(@"i is %d , j is %d ,distance is %d",i,j,isOverlay);
             if (isOverlay) {
                 numberBadge ++;
@@ -145,7 +145,7 @@
     return CLLocationCoordinate2DMake(latitude, longitude);
 }
 ///判断两个annotationView 是否有重叠
-- (BOOL)IntersectFrom:(CGPoint)point1 with:(CGPoint)point2
+- (BOOL)intersectFrom:(CGPoint)point1 with:(CGPoint)point2
 {
     //单个annotationView 的 Frame
     CGRect rect1 = [self getAnnotationViewWith:point1];
@@ -199,7 +199,7 @@
             
         }
         NSDictionary * pointInfo = pointAnnotation.annotationInfo;
-        annotationView.label.text = [NSString stringWithFormat:@"%lu",(unsigned long)[_contentPoints indexOfObject:pointInfo]];
+//        annotationView.label.text = [NSString stringWithFormat:@"%lu",(unsigned long)[_contentPoints indexOfObject:pointInfo]];
         
         UIImage * image = [UIImage imageNamed:[NSString stringWithFormat:@"location_0"]];
         annotationView.image = image;
