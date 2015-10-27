@@ -34,9 +34,16 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = NO;
     // Do any additional setup after loading the view.
-    CGPoint point = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2);
+    
+     /*
+     *设置三个PhotoFlowLayout，为了切换时有过渡效果。
+     *仅通过一个改变相应位置不会有过渡效果。
+     */
     _flowLayout = [[PhotoFlowLayout alloc] init];
     
+    /*
+     根据view的宽度和一行显示个数计算item的宽度
+     */
     width = (self.view.frame.size.width - _flowLayout.minimumLineSpacing)/SingleLineNumber - _flowLayout.minimumLineSpacing;
     _flowLayout.itemSize = CGSizeMake(width, width);
     
@@ -50,7 +57,9 @@
     _centerFlowLayout.flowLayoutType = FlowLayoutTypeCenter;
     _centerFlowLayout.toRect = _fromRect;
     
-    _photoCollectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:_flowLayout];
+    CGRect rect = self.view.bounds;
+    rect.size.height -= 64;
+    _photoCollectionView = [[UICollectionView alloc] initWithFrame:rect collectionViewLayout:_centerFlowLayout];
     _photoCollectionView.backgroundColor = [UIColor clearColor];
     _photoCollectionView.delegate = self;
     _photoCollectionView.dataSource = self;
@@ -64,27 +73,30 @@
     UIScreenEdgePanGestureRecognizer *popRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePopRecognizer:)];
     popRecognizer.edges = UIRectEdgeLeft;
     [self.view addGestureRecognizer:popRecognizer];
-
 }
 
 - (void)rightButtonItemEvent
 {
     __weak UICollectionView * wCollectionView = _photoCollectionView;
-
+    /*
+     *单独改变 collectionViewLayout 相关属性不会有动画效果
+     *需要 setCollectionViewLayout:animated:方法设置新的collectionViewLayout才有过渡效果
+     */
     if (_photoCollectionView.collectionViewLayout == _flowLayout) {
-        [_photoCollectionView setCollectionViewLayout:_centerFlowLayout animated:YES completion:^(BOOL finished) {
-//            [_photoCollectionView setCollectionViewLayout:_centerFlowLayout animated:YES ];
-        }];
+        [_photoCollectionView setCollectionViewLayout:_centerFlowLayout animated:YES completion:nil];
+        /*
+         *必须设置contentOffset为原点才会是最初展示的位置
+         */
+        [_photoCollectionView setContentOffset:CGPointZero animated:NO];
     }else{
         __weak PhotoFlowLayout * wLayout = _flowLayout;
+        /*
+         *先设置弹性（远一点）位置，在设置正常位置
+         */
         [_photoCollectionView setCollectionViewLayout:_otherFlowLayout animated:YES completion:^(BOOL finished) {
             [wCollectionView setCollectionViewLayout:wLayout animated:YES ];
         }];
     }
-//    _flowLayout.allItemInternalPoint = !_flowLayout.allItemInternalPoint;
-//    [_flowLayout invalidateLayout];
-
-
 }
 
 
@@ -107,9 +119,6 @@
 
 -(BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    PhotoCell * cell = (PhotoCell *)[collectionView cellForItemAtIndexPath:indexPath];
-//    cell.selected = NO;
-//    cell.highlighted =YES;
     return YES;
 }
 
@@ -142,6 +151,13 @@
     if (self.navigationController.delegate != self) {
         self.navigationController.delegate = self;
     }
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [PublicObject dispatchQueueDelayTime:0.01 block:^{
+        [self rightButtonItemEvent];
+    }];
 }
 
 #pragma mark UINavigationControllerDelegate methods
