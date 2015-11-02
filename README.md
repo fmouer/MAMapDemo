@@ -4,3 +4,5 @@
 [`Cocoapods`安装教程](http://code4app.com/article/cocoapods-install-usage)<br>
 地图采用的是高德地图。<br>
 效果图：<br>
+
+![screenshot1](https://github.com/fmouer/MAMapDemo/raw/master/Screenshot/Screenshot_1.gif)<br>
